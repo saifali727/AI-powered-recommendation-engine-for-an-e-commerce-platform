@@ -1,0 +1,8 @@
+Flask
+pymongo
+pyJWT
+chardet
+flask_caching
+pandas
+scikit-learn
+requests

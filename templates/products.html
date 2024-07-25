@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products Page</title>
+    <style>
+        /* Reset styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+
+        .hero {
+            height: 50vh; /* Full viewport height */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1713256697188-5a226eef80fc?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            padding: 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50; /* Updated color */
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #45a049; /* Darker shade for hover */
+        }
+
+        .container {
+            max-width: 90%;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #4CAF50; /* Updated color */
+        }
+
+        .products {
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .product {
+            cursor:pointer;
+            background-color: #ffffff;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            width: calc(100% - 10px); /* Two products per row */
+            padding: 20px;
+            display: flex;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+        .rproduct {
+    cursor: pointer;
+    background-color: #ffffff;
+    border-radius: 15px;
+    margin: 1%;
+    width: calc(28% - 6%);
+    padding: 2%;
+    display: block;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+        }
+
+        .product:hover, .rproduct:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-image {
+            flex: 1;
+            max-width: 200px;
+            margin-right: 20px;
+        }
+
+        .rproduct .product-image {
+            margin-right: 20px;
+            justify-content: center;
+            flex: 1;
+            /* max-width: 100px; */
+            margin-right: 20px;
+            display: contents;
+            text-align: center;
+        }
+
+        .product-image img {
+            max-width: 100%;
+            border-radius: 15px;
+        }
+
+        .product-details {
+            flex: 3;
+        }
+
+        .product-name {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .rproduct .product-name {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 10px;
+            display: -webkit-box;
+          -webkit-line-clamp: 2; /* Adjust the number of lines as necessary */
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+
+        .product-description {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .product-price {
+            font-size: 1.1rem;
+            color: #e74c3c;
+            margin-bottom: 10px;
+        }
+
+        .product-rating {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .product-rating span {
+            margin-left: 5px;
+            font-size: 0.9rem;
+            color: #999;
+        }
+
+        .product-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .add-to-cart-btn {
+            background-color: #4CAF50; /* Updated color */
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .add-to-cart-btn:hover {
+            background-color: #45a049; /* Darker shade for hover */
+        }
+
+        .more-options {
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .recommended-products {
+            margin-top: 40px;
+        }
+
+        .recommended-products h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #4CAF50; /* Updated color */
+        }
+
+        .recommended-products .products {
+            display: flex;
+            flex-wrap: wrap;
+        }
+.categories {
+    display: flex;
+    flex-direction: column;
+    margin-right:20px
+}
+
+.category {
+    position: relative;
+    padding: 10px;
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.category:hover .subcategories {
+    display: block;
+}
+
+.subcategories {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    z-index: 1000;
+    min-width: 150px;
+}
+
+.subcategories a {
+    display: block;
+    padding: 5px;
+    text-decoration: none;
+    color: #333;
+}
+
+.subcategories a:hover {
+    background-color: #f0f0f0;
+}
+        .productContainer{
+        display:flex;
+        margin-top:50px;
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Our Website</h1>
+            <p>Discover amazing products and services</p>
+            <a href="#" class="btn">Explore Now</a>
+        </div>
+    </section>
+    <div class="container">
+        <div class="productContainer">
+            <div>
+                 <h1>Categories</h1>
+                <div class="categories" id="categoriesContainer">
+                    <!-- Categories will be dynamically added here -->
+                </div>
+            </div>
+
+            <div>
+                <h1>Featured Products</h1>
+                <div class="products" id="productsContainer">
+                    <!-- Product cards will be dynamically added here -->
+                </div>
+                 <div class="pagination">
+                    <button id="prevPage" class="add-to-cart-btn">Previous</button>
+                    <button id="nextPage" class="add-to-cart-btn">Next</button>
+             </div>
+            </div>
+
+
+        </div>
+
+    <div class="recommended-products">
+        <h2>Recommended Products</h2>
+            <div class="products" id="recommendedProductsContainer">
+            <!-- Recommended product cards will be dynamically added here -->
+            </div>
+
+    </div>
+</div>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
+    <script>
+$(document).ready(function() {
+    var currentPage = 1;
+    var totalPages = 1;
+
+     function fetchCategories() {
+    $.ajax({
+        type: 'GET',
+        url: '/api/categories',
+        success: function(categories) {
+            displayCategories(categories);
+        },
+        error: function(xhr, status, error) {
+            console.error('Error fetching categories:', error);
+        }
+    });
+}
+
+function displayCategories(categories) {
+    var categoriesContainer = $('#categoriesContainer');
+    categoriesContainer.empty();
+    for (var mainCategory in categories) {
+        if (categories.hasOwnProperty(mainCategory)) {
+            var subCategories = categories[mainCategory];
+            var subCategoryList = '<div class="subcategories">';
+            subCategories.forEach(function(subCategory) {
+                subCategoryList += `<a href="#" class="subcategory" data-main-category="${mainCategory}" data-sub-category="${subCategory}">${subCategory}</a>`;
+            });
+            subCategoryList += '</div>';
+            var categoryItem = `
+                <div class="category" data-main-category="${mainCategory}">
+                    ${mainCategory}
+                    ${subCategoryList}
+                </div>
+            `;
+            categoriesContainer.append(categoryItem);
+        }
+    }
+}
+
+
+    function fetchProducts(mainCategory, subCategory) {
+        var url = '/api/products?page=' + currentPage + '&per_page=10';
+        if (mainCategory) {
+            url += '&main_category=' + encodeURIComponent(mainCategory);
+            if (subCategory) {
+                url += '&sub_category=' + encodeURIComponent(subCategory);
+            }
+        }
+        $.ajax({
+            type: 'GET',
+            url: url,
+            success: function(response) {
+                totalPages = response.total_pages;
+                displayProducts(response.products);
+            },
+            error: function(xhr, status, error) {
+                console.error('Error fetching products:', error);
+            }
+        });
+    }
+
+    function displayProducts(products) {
+        var productsContainer = $('#productsContainer');
+        productsContainer.empty();
+        products.forEach(function(product) {
+            var productCard = `
+                <div class="product" data-id="${product.product_id}">
+                    <div class="product-image">
+                        <img src="${product.img_link}" alt="Product Image">
+                    </div>
+                    <div class="product-details">
+                        <h2 class="product-name">${product.product_name}</h2>
+                        <p class="product-description">${product.actual_price}</p>
+                        <div class="product-price">${product.discounted_price}</div>
+                        <div class="product-rating">
+                            <img src="star-icon.png" alt="Rating">
+                            <span>${product.rating} (${product.rating_count})</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="add-to-cart-btn">Show More</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            productsContainer.append(productCard);
+        });
+    }
+
+$('#categoriesContainer').on('click', '.subcategories a', function(e) {
+    e.preventDefault();
+
+    var mainCategory = $(this).data('main-category');
+    var subCategory = $(this).data('sub-category');
+    console.log(mainCategory)
+    // Reset to first page
+    currentPage = 1;
+
+    // Update selected categories
+    $('.category').removeClass('selected');
+    $('.subcategory').removeClass('selected');
+
+    // Mark the clicked subcategory as selected
+    $(this).addClass('selected');
+
+    // Mark the parent category as selected
+   $(this).closest('.subcategories').closest('.category').addClass('selected');
+
+    // Fetch products with the selected categories
+    fetchProducts(mainCategory, subCategory);
+});
+
+    function fetchRecommendedProducts() {
+        const token = getJwtToken();
+        const userId = getUserIdFromToken(token);
+        if (userId) {
+            $.ajax({
+                type: 'GET',
+                headers: {"Authorization": `Bearer ${token}`},
+                url: `/api/filter?user_id=` + userId,
+                success: function(response) {
+                    displayRecommendedProducts(response.products);
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error fetching recommended products:', error);
+                }
+            });
+        } else {
+            console.error('User ID could not be extracted from token.');
+        }
+    }
+
+    function displayRecommendedProducts(products) {
+        var recommendedProductsContainer = $('#recommendedProductsContainer');
+        recommendedProductsContainer.empty();
+        products.forEach(function(product) {
+            var productCard = `
+                <div class="rproduct" data-id="${product.product_id}">
+                    <div class="product-image">
+                        <img src="${product.img_link}" alt="Product Image">
+                    </div>
+                    <div class="product-details">
+                        <h2 class="product-name">${product.product_name}</h2>
+                        <p class="product-description">${product.actual_price}</p>
+                        <div class="product-price">${product.discounted_price}</div>
+                        <div class="product-rating">
+                            <img src="star-icon.png" alt="Rating">
+                            <span>${product.rating} (${product.rating_count})</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="add-to-cart-btn">Show More</button>
+
+                        </div>
+                    </div>
+                </div>
+            `;
+            recommendedProductsContainer.append(productCard);
+        });
+    }
+
+
+
+    function getSelectedCategories() {
+    var selectedMainCategory = $('#categoriesContainer .category.selected').data('main-category');
+    var selectedSubCategory = $('#categoriesContainer .subcategory.selected').data('sub-category');
+    console.log(selectedSubCategory)
+    console.log(selectedMainCategory)
+    return { mainCategory: selectedMainCategory, subCategory: selectedSubCategory };
+}
+
+
+
+// Event listener for Next button
+    $('#nextPage').on('click', function() {
+        if (currentPage < totalPages) {
+            currentPage++;
+            var selectedCategories = getSelectedCategories();
+            fetchProducts(selectedCategories.mainCategory, selectedCategories.subCategory);
+        }
+    });
+
+    // Event listener for Previous button
+    $('#prevPage').on('click', function() {
+        if (currentPage > 1) {
+            currentPage--;
+            var selectedCategories = getSelectedCategories();
+            fetchProducts(selectedCategories.mainCategory, selectedCategories.subCategory);
+        }
+    });
+    $(document).on('click', '.product, .rproduct', function() {
+        var productId = $(this).data('id');
+        const token = getJwtToken();
+        const userId = getUserIdFromToken(token);
+        if(token){
+
+            $.ajax({
+                type: 'POST',
+                headers: {"Authorization": `Bearer ${token}`},
+                url: '/api/create-user-product-history',
+                data: JSON.stringify({
+                    "product_id": productId,
+                    "user_id": userId
+                }),
+                contentType: 'application/json',
+                success: function(response) {
+                    window.location.href = '/product_display?product_id=' + productId;
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error creating user product history:', error);
+                }
+            });
+        }else{
+            window.location.href = '/login';
+        }
+    });
+    check_auth();
+    var initialCategories = getSelectedCategories();
+    fetchProducts(initialCategories.mainCategory, initialCategories.subCategory);
+    fetchCategories();
+
+    fetchRecommendedProducts();
+
+    function getJwtToken() {
+        return sessionStorage.getItem('token');
+    }
+
+    function getUserIdFromToken(token) {
+        try {
+            const decoded = jwt_decode(token);
+            return decoded.sub;
+        } catch (e) {
+            console.error('Invalid token or decoding error:', e);
+            return null;
+        }
+    }
+
+    function check_auth(){
+    token = getJwtToken();
+    if(!token){
+        window.location.href = '/login';
+    }
+    }
+
+});
+
+</script>
+
+
+</body>
+</html>
