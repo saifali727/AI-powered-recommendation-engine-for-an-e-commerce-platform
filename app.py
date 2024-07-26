@@ -7,7 +7,6 @@ from flask_caching import Cache
 import webbrowser
 app = Flask(__name__)
 app.config.from_object(Config)
-import requests as request
 # Initialize caching
 cache = Cache(app, config={'CACHE_TYPE': 'simple'})
 
