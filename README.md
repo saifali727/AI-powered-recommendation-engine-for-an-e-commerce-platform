@@ -7,8 +7,8 @@ This project is a working prototype of a recommendation model created using gene
 To get started, clone the repository and install the required packages:
 make sure to have latest version of python
 ```bash
-git clone https://github.com/your-repo/knn-product-recommendation.git
-cd knn-product-recommendation
+git clone https://github.com/saifali727/AI-powered-recommendation-engine-for-an-e-commerce-platform.git
+cd AI-powered-recommendation-engine-for-an-e-commerce-platform
 run setup_and_run.bat ( for windows)
 run setup_and_run.sh ( for mac and linux)
 ```
