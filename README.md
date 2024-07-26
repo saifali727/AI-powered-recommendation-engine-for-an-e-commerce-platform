@@ -34,7 +34,7 @@ the model takes time only the first time on running server  when it create clust
 - **Signup and Login**: The application starts with a signup page. You need to first signup and then log in to access the application.
 - **Default Credentials**: You can use the following default credentials to log in:
   - Email: saif@gmail.com
-  - Password: password
+  - Password: 12345678
 - **Product Listing**: Upon login, you will see a list of products and categories.
   - The product data is sourced from Kaggle: [Amazon Products Dataset](https://www.kaggle.com/datasets/lokeshparab/amazon-products-dataset)
 - **Recommended Products**: At the end of the product listing page, you can see your recommended products.
